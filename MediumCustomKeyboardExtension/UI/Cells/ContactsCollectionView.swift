@@ -8,6 +8,7 @@ class ContactsCollectionView: UICollectionView {
     static let cellReuseId: String = "contactcell"
     
     private var contacts: [CNContact] = []
+    private var filterKey: Filter? = nil
     var selectedContact: AnyPublisher<CNContact, Never> {
         return _selectedContact.eraseToAnyPublisher()
     }
@@ -47,8 +48,9 @@ class ContactsCollectionView: UICollectionView {
         return UICollectionViewCompositionalLayout(section: section)
     }
     
-    func show(contacts: [CNContact]) {
+    func show(contacts: [CNContact], filterKey: Filter? = nil) {
         self.contacts = contacts
+        self.filterKey = filterKey
         reloadData()
     }
 }
@@ -85,7 +87,7 @@ extension ContactsCollectionView: UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: Self.cellReuseId, for: indexPath)
         if let cell = cell as? ContactCollectionViewCell {
-            cell.show(contact: contacts[indexPath.row])
+            cell.show(contact: contacts[indexPath.row], filterKey: filterKey)
         }
         return cell
     }

@@ -5,10 +5,12 @@ import Contacts
 
 class KeyboardView: UIView, NibView {
     
+    @IBOutlet private weak var containerStackView: UIStackView!
     @IBOutlet private weak var errorContainerView: UIView!
-    @IBOutlet private weak var titleView: UIView!
+    @IBOutlet private weak var toolbarView: UIView!
     @IBOutlet private weak var contactsView: ContactsCollectionView!
-    
+    private weak var filterKeyboardView: KeyboardFilterView!
+        
     var selectedContact: AnyPublisher<CNContact, Never> {
         return contactsView.selectedContact
     }
@@ -18,7 +20,9 @@ class KeyboardView: UIView, NibView {
             commonInit()
         }
     }
+    
     private var disposables = Set<AnyCancellable>()
+    private var keyboardDisposables = Set<AnyCancellable>()
     
     override init(frame: CGRect) {
         super.init(frame: frame)
@@ -44,22 +48,61 @@ class KeyboardView: UIView, NibView {
         switch state {
         case .loading:
             errorContainerView.isHidden = true
-            titleView.isHidden = true
+            toolbarView.isHidden = true
             contactsView.isHidden = true
-        case let .contacts(contacts):
+        case let .contacts(contacts, editingMode):
             errorContainerView.isHidden = true
-            titleView.isHidden = false
+            toolbarView.isHidden = false
             contactsView.isHidden = false
-            contactsView.show(contacts: contacts)
+            var filterKey: String? = nil
+            if editingMode == .idle {
+                unmountKeyboard()
+            } else if case let EditingMode.edition(filter) = editingMode {
+                filterKey = filter
+                mountKeyboard()
+            }
+            contactsView.show(contacts: contacts, filterKey: filterKey)
         case .error:
             errorContainerView.isHidden = false
-            titleView.isHidden = true
+            toolbarView.isHidden = true
             contactsView.isHidden = true
+        }
+    }
+    
+    private func mountKeyboard() {
+        guard filterKeyboardView == nil else { return }
+        let keyboard = KeyboardFilterView()
+        keyboard
+            .keyPressed
+            .receive(on: DispatchQueue.main)
+            .sink { [weak self] key in
+                self?.viewModel.keyPressed(key)
+            }
+            .store(in: &keyboardDisposables)
+        keyboard.isHidden = true
+        containerStackView.addArrangedSubview(keyboard)
+        UIView.animate(withDuration: 0.2) {
+            keyboard.isHidden = false
+        }
+        self.filterKeyboardView = keyboard
+    }
+    
+    private func unmountKeyboard() {
+        guard let keyboard = filterKeyboardView else { return }
+        UIView.animate(withDuration: 0.2) {
+            keyboard.isHidden = true
+        } completion: { _ in
+            self.containerStackView.remove(keyboard)
+            self.keyboardDisposables = Set<AnyCancellable>()
         }
     }
     
     func load() {
         viewModel.load()
+    }
+    
+    @IBAction private func onSearch(button: UIButton) {
+        viewModel.switchEditingMode()
     }
 }
 

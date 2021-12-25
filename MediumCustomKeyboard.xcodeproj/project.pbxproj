@@ -15,6 +15,11 @@
 		46AC0506276FE01000990873 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 46AC0504276FE01000990873 /* LaunchScreen.storyboard */; };
 		46AC0514276FE18400990873 /* KeyboardViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46AC0513276FE18400990873 /* KeyboardViewController.swift */; };
 		46AC0518276FE18400990873 /* MediumCustomKeyboardExtension.appex in Embed App Extensions */ = {isa = PBXBuildFile; fileRef = 46AC0511276FE18400990873 /* MediumCustomKeyboardExtension.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
+		46B2F0DD277745FE007CDA85 /* KeyboardModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46B2F0DB277745FE007CDA85 /* KeyboardModel.swift */; };
+		46B2F0DE277745FE007CDA85 /* KeyboardFilterView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46B2F0DC277745FE007CDA85 /* KeyboardFilterView.swift */; };
+		46B2F0E02777473F007CDA85 /* UIView+Utils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46B2F0DF2777473F007CDA85 /* UIView+Utils.swift */; };
+		46B2F0E227774782007CDA85 /* GestureRecognizer+Combine.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46B2F0E127774782007CDA85 /* GestureRecognizer+Combine.swift */; };
+		46B2F0E42777856A007CDA85 /* FilterContacts.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46B2F0E32777856A007CDA85 /* FilterContacts.swift */; };
 		46F9019D2775BEAE00024B5E /* GetContacts.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46F9019C2775BEAE00024B5E /* GetContacts.swift */; };
 		46F901A02775BEE800024B5E /* ContactsRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46F9019F2775BEE800024B5E /* ContactsRepository.swift */; };
 		46F901A22775BF4B00024B5E /* ContactsRepositoryDefault.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46F901A12775BF4B00024B5E /* ContactsRepositoryDefault.swift */; };
@@ -63,6 +68,11 @@
 		46AC0511276FE18400990873 /* MediumCustomKeyboardExtension.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = MediumCustomKeyboardExtension.appex; sourceTree = BUILT_PRODUCTS_DIR; };
 		46AC0513276FE18400990873 /* KeyboardViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeyboardViewController.swift; sourceTree = "<group>"; };
 		46AC0515276FE18400990873 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		46B2F0DB277745FE007CDA85 /* KeyboardModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = KeyboardModel.swift; sourceTree = "<group>"; };
+		46B2F0DC277745FE007CDA85 /* KeyboardFilterView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = KeyboardFilterView.swift; sourceTree = "<group>"; };
+		46B2F0DF2777473F007CDA85 /* UIView+Utils.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+Utils.swift"; sourceTree = "<group>"; };
+		46B2F0E127774782007CDA85 /* GestureRecognizer+Combine.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "GestureRecognizer+Combine.swift"; sourceTree = "<group>"; };
+		46B2F0E32777856A007CDA85 /* FilterContacts.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FilterContacts.swift; sourceTree = "<group>"; };
 		46F9019C2775BEAE00024B5E /* GetContacts.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetContacts.swift; sourceTree = "<group>"; };
 		46F9019F2775BEE800024B5E /* ContactsRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContactsRepository.swift; sourceTree = "<group>"; };
 		46F901A12775BF4B00024B5E /* ContactsRepositoryDefault.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContactsRepositoryDefault.swift; sourceTree = "<group>"; };
@@ -137,9 +147,19 @@
 			path = MediumCustomKeyboardExtension;
 			sourceTree = "<group>";
 		};
+		46B2F0DA277745E4007CDA85 /* Keyboard */ = {
+			isa = PBXGroup;
+			children = (
+				46B2F0DB277745FE007CDA85 /* KeyboardModel.swift */,
+				46B2F0DC277745FE007CDA85 /* KeyboardFilterView.swift */,
+			);
+			path = Keyboard;
+			sourceTree = "<group>";
+		};
 		46F901992775BE8400024B5E /* UI */ = {
 			isa = PBXGroup;
 			children = (
+				46B2F0DA277745E4007CDA85 /* Keyboard */,
 				46F901AD2775F9EF00024B5E /* Cells */,
 				46F901A82775D97000024B5E /* Utils */,
 				46F901A42775D2D000024B5E /* KeyboardViewModel.swift */,
@@ -154,6 +174,7 @@
 			children = (
 				46F9019C2775BEAE00024B5E /* GetContacts.swift */,
 				46F9019F2775BEE800024B5E /* ContactsRepository.swift */,
+				46B2F0E32777856A007CDA85 /* FilterContacts.swift */,
 			);
 			path = Business;
 			sourceTree = "<group>";
@@ -170,6 +191,8 @@
 			isa = PBXGroup;
 			children = (
 				46F901A92775D97900024B5E /* NibView.swift */,
+				46B2F0DF2777473F007CDA85 /* UIView+Utils.swift */,
+				46B2F0E127774782007CDA85 /* GestureRecognizer+Combine.swift */,
 			);
 			path = Utils;
 			sourceTree = "<group>";
@@ -296,15 +319,20 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				46B2F0DD277745FE007CDA85 /* KeyboardModel.swift in Sources */,
 				46F901A52775D2D000024B5E /* KeyboardViewModel.swift in Sources */,
+				46B2F0E42777856A007CDA85 /* FilterContacts.swift in Sources */,
 				46F901A22775BF4B00024B5E /* ContactsRepositoryDefault.swift in Sources */,
 				46AC0514276FE18400990873 /* KeyboardViewController.swift in Sources */,
+				46B2F0DE277745FE007CDA85 /* KeyboardFilterView.swift in Sources */,
 				46F901A72775D94400024B5E /* KeyboardView.swift in Sources */,
 				46F9019D2775BEAE00024B5E /* GetContacts.swift in Sources */,
 				46F901AF2775F9FB00024B5E /* ContactsCollectionView.swift in Sources */,
 				46F901A02775BEE800024B5E /* ContactsRepository.swift in Sources */,
 				46F901AA2775D97900024B5E /* NibView.swift in Sources */,
+				46B2F0E02777473F007CDA85 /* UIView+Utils.swift in Sources */,
 				46F901B32775FD5900024B5E /* ContactCollectionViewCell.swift in Sources */,
+				46B2F0E227774782007CDA85 /* GestureRecognizer+Combine.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

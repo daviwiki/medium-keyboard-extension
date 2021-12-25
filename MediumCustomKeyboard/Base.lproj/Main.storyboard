@@ -30,6 +30,9 @@
                             <constraint firstItem="gaL-lV-ok9" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="16" id="kni-At-NR0"/>
                         </constraints>
                     </view>
+                    <connections>
+                        <outlet property="textField" destination="gaL-lV-ok9" id="xZc-eQ-cj7"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>

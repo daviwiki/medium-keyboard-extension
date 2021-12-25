@@ -15,17 +15,15 @@ class ContactCollectionViewCell: UICollectionViewCell {
         bubbleView.layer.cornerRadius = bubbleView.bounds.width / 2
     }
         
-    func show(contact: CNContact) {
-        contact.populate(view: self)
+    func show(contact: CNContact, filterKey: Filter? = nil) {
+        contact.populate(view: self, filterKey: filterKey)
     }
 }
 
 private extension CNContact {
-    static let digitsKey: String = "digits"
-    static let countryKey: String = "initialCountryCode"
     
-    func populate(view: ContactCollectionViewCell) {
-        view.nameLabel.text = CNContactFormatter.string(from: self, style: .fullName)
+    func populate(view: ContactCollectionViewCell, filterKey: Filter?) {
+        view.nameLabel.attributedText = attributtedName(view: view, using: filterKey)
         view.acronymLabel.text = namePrefix
         
         if let number = firstPhone {
@@ -41,6 +39,30 @@ private extension CNContact {
             view.profileImageView.isHidden = true
             view.acronymLabel.isHidden = false
         }
+    }
+    
+    private func attributtedName(view: ContactCollectionViewCell, using filterKey: Filter?) -> NSAttributedString {
+        let regularFont = UIFont.systemFont(ofSize: 14, weight: .regular)
+        
+        let name = CNContactFormatter.string(from: self, style: .fullName) ?? ""
+        let attributed = NSMutableAttributedString(
+            string: name, attributes: [
+                .font : regularFont
+            ])
+        
+        guard let filterKey = filterKey else {
+            return attributed
+        }
+        
+        guard let regex = try? NSRegularExpression(pattern: filterKey, options: .caseInsensitive) else {
+            return attributed
+        }
+        
+        let boldFont = UIFont.systemFont(ofSize: 14, weight: .semibold)
+        for match in regex.matches(in: name, options: [], range: NSRange(location: 0, length: name.count)) {
+            attributed.addAttribute(.font, value: boldFont, range: match.range)
+        }
+        return attributed
     }
 }
 

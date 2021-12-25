@@ -11,8 +11,9 @@
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="KeyboardView" customModule="MediumCustomKeyboardExtension" customModuleProvider="target">
             <connections>
                 <outlet property="contactsView" destination="Nta-VE-sNL" id="nOs-dZ-tHg"/>
+                <outlet property="containerStackView" destination="Gv8-7o-67W" id="b0v-CM-KZm"/>
                 <outlet property="errorContainerView" destination="Jm2-60-vH4" id="ABn-TK-oW8"/>
-                <outlet property="titleView" destination="Gyh-Ns-agk" id="Uch-YO-WWc"/>
+                <outlet property="toolbarView" destination="65I-jL-lc7" id="uu8-WB-kzG"/>
             </connections>
         </placeholder>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
@@ -24,10 +25,10 @@
                     <rect key="frame" x="8" y="44" width="398" height="269"/>
                     <subviews>
                         <view hidden="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Jm2-60-vH4" userLabel="View - Error View">
-                            <rect key="frame" x="0.0" y="-128" width="398" height="128"/>
+                            <rect key="frame" x="0.0" y="-32" width="398" height="32"/>
                             <subviews>
                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Contacts couldn't be loaded" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="q2H-XW-H8b" userLabel="Label - Error Message">
-                                    <rect key="frame" x="16" y="16" width="366" height="96"/>
+                                    <rect key="frame" x="16" y="16" width="366" height="0.0"/>
                                     <fontDescription key="fontDescription" type="system" pointSize="18"/>
                                     <nil key="textColor"/>
                                     <nil key="highlightedColor"/>
@@ -35,27 +36,43 @@
                             </subviews>
                             <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                             <constraints>
-                                <constraint firstAttribute="height" constant="128" id="H5K-fz-Uac"/>
+                                <constraint firstAttribute="height" priority="999" constant="128" id="H5K-fz-Uac"/>
                                 <constraint firstItem="q2H-XW-H8b" firstAttribute="leading" secondItem="Jm2-60-vH4" secondAttribute="leading" constant="16" id="UKe-YV-0Ap"/>
                                 <constraint firstItem="q2H-XW-H8b" firstAttribute="top" secondItem="Jm2-60-vH4" secondAttribute="top" constant="16" id="Xdt-Kd-y4f"/>
                                 <constraint firstAttribute="bottom" secondItem="q2H-XW-H8b" secondAttribute="bottom" constant="16" id="XsF-AY-hN7"/>
                                 <constraint firstAttribute="trailing" secondItem="q2H-XW-H8b" secondAttribute="trailing" constant="16" id="hgz-Vb-aIb"/>
                             </constraints>
                         </view>
-                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Contacts" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Gyh-Ns-agk" userLabel="Label - Title">
-                            <rect key="frame" x="0.0" y="0.0" width="398" height="69"/>
+                        <stackView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="65I-jL-lc7" userLabel="Stack View - Toolbar">
+                            <rect key="frame" x="0.0" y="0.0" width="398" height="48"/>
+                            <subviews>
+                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Contacts" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Gyh-Ns-agk" userLabel="Label - Title">
+                                    <rect key="frame" x="0.0" y="0.0" width="350" height="48"/>
+                                    <fontDescription key="fontDescription" type="system" pointSize="26"/>
+                                    <nil key="textColor"/>
+                                    <nil key="highlightedColor"/>
+                                </label>
+                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="8nb-PB-aJu" userLabel="Button - search">
+                                    <rect key="frame" x="350" y="0.0" width="48" height="48"/>
+                                    <constraints>
+                                        <constraint firstAttribute="width" secondItem="8nb-PB-aJu" secondAttribute="height" multiplier="1:1" priority="999" id="VtF-rr-7jj"/>
+                                    </constraints>
+                                    <color key="tintColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                    <state key="normal" image="magnifyingglass" catalog="system"/>
+                                    <connections>
+                                        <action selector="onSearchWithButton:" destination="-1" eventType="touchUpInside" id="CCL-Vo-dZt"/>
+                                    </connections>
+                                </button>
+                            </subviews>
                             <constraints>
-                                <constraint firstAttribute="height" priority="999" constant="48" id="kdi-eT-1N2"/>
+                                <constraint firstAttribute="height" priority="999" constant="48" id="xwC-21-VYk"/>
                             </constraints>
-                            <fontDescription key="fontDescription" type="system" pointSize="26"/>
-                            <nil key="textColor"/>
-                            <nil key="highlightedColor"/>
-                        </label>
+                        </stackView>
                         <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="none" translatesAutoresizingMaskIntoConstraints="NO" id="Nta-VE-sNL" customClass="ContactsCollectionView" customModule="MediumCustomKeyboardExtension" customModuleProvider="target">
-                            <rect key="frame" x="0.0" y="69" width="398" height="200"/>
+                            <rect key="frame" x="0.0" y="48" width="398" height="221"/>
                             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             <constraints>
-                                <constraint firstAttribute="height" constant="200" id="a1i-Cx-HQi"/>
+                                <constraint firstAttribute="height" priority="999" constant="200" id="a1i-Cx-HQi"/>
                             </constraints>
                             <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="AON-pi-ttp">
                                 <size key="itemSize" width="128" height="128"/>
@@ -80,6 +97,7 @@
         </view>
     </objects>
     <resources>
+        <image name="magnifyingglass" catalog="system" width="128" height="115"/>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </systemColor>
