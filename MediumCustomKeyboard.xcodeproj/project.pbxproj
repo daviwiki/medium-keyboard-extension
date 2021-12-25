@@ -15,6 +15,16 @@
 		46AC0506276FE01000990873 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 46AC0504276FE01000990873 /* LaunchScreen.storyboard */; };
 		46AC0514276FE18400990873 /* KeyboardViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46AC0513276FE18400990873 /* KeyboardViewController.swift */; };
 		46AC0518276FE18400990873 /* MediumCustomKeyboardExtension.appex in Embed App Extensions */ = {isa = PBXBuildFile; fileRef = 46AC0511276FE18400990873 /* MediumCustomKeyboardExtension.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
+		46F9019D2775BEAE00024B5E /* GetContacts.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46F9019C2775BEAE00024B5E /* GetContacts.swift */; };
+		46F901A02775BEE800024B5E /* ContactsRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46F9019F2775BEE800024B5E /* ContactsRepository.swift */; };
+		46F901A22775BF4B00024B5E /* ContactsRepositoryDefault.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46F901A12775BF4B00024B5E /* ContactsRepositoryDefault.swift */; };
+		46F901A52775D2D000024B5E /* KeyboardViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46F901A42775D2D000024B5E /* KeyboardViewModel.swift */; };
+		46F901A72775D94400024B5E /* KeyboardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46F901A62775D94400024B5E /* KeyboardView.swift */; };
+		46F901AA2775D97900024B5E /* NibView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46F901A92775D97900024B5E /* NibView.swift */; };
+		46F901AC2775D99A00024B5E /* KeyboardView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 46F901AB2775D99A00024B5E /* KeyboardView.xib */; };
+		46F901AF2775F9FB00024B5E /* ContactsCollectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46F901AE2775F9FB00024B5E /* ContactsCollectionView.swift */; };
+		46F901B12775FA0200024B5E /* ContactCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 46F901B02775FA0200024B5E /* ContactCollectionViewCell.xib */; };
+		46F901B32775FD5900024B5E /* ContactCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46F901B22775FD5900024B5E /* ContactCollectionViewCell.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -53,6 +63,16 @@
 		46AC0511276FE18400990873 /* MediumCustomKeyboardExtension.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = MediumCustomKeyboardExtension.appex; sourceTree = BUILT_PRODUCTS_DIR; };
 		46AC0513276FE18400990873 /* KeyboardViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeyboardViewController.swift; sourceTree = "<group>"; };
 		46AC0515276FE18400990873 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		46F9019C2775BEAE00024B5E /* GetContacts.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetContacts.swift; sourceTree = "<group>"; };
+		46F9019F2775BEE800024B5E /* ContactsRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContactsRepository.swift; sourceTree = "<group>"; };
+		46F901A12775BF4B00024B5E /* ContactsRepositoryDefault.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContactsRepositoryDefault.swift; sourceTree = "<group>"; };
+		46F901A42775D2D000024B5E /* KeyboardViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeyboardViewModel.swift; sourceTree = "<group>"; };
+		46F901A62775D94400024B5E /* KeyboardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeyboardView.swift; sourceTree = "<group>"; };
+		46F901A92775D97900024B5E /* NibView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NibView.swift; sourceTree = "<group>"; };
+		46F901AB2775D99A00024B5E /* KeyboardView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = KeyboardView.xib; sourceTree = "<group>"; };
+		46F901AE2775F9FB00024B5E /* ContactsCollectionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContactsCollectionView.swift; sourceTree = "<group>"; };
+		46F901B02775FA0200024B5E /* ContactCollectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ContactCollectionViewCell.xib; sourceTree = "<group>"; };
+		46F901B22775FD5900024B5E /* ContactCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContactCollectionViewCell.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -108,10 +128,60 @@
 		46AC0512276FE18400990873 /* MediumCustomKeyboardExtension */ = {
 			isa = PBXGroup;
 			children = (
+				46F9019B2775BE8D00024B5E /* Data */,
+				46F9019A2775BE8700024B5E /* Business */,
+				46F901992775BE8400024B5E /* UI */,
 				46AC0513276FE18400990873 /* KeyboardViewController.swift */,
 				46AC0515276FE18400990873 /* Info.plist */,
 			);
 			path = MediumCustomKeyboardExtension;
+			sourceTree = "<group>";
+		};
+		46F901992775BE8400024B5E /* UI */ = {
+			isa = PBXGroup;
+			children = (
+				46F901AD2775F9EF00024B5E /* Cells */,
+				46F901A82775D97000024B5E /* Utils */,
+				46F901A42775D2D000024B5E /* KeyboardViewModel.swift */,
+				46F901A62775D94400024B5E /* KeyboardView.swift */,
+				46F901AB2775D99A00024B5E /* KeyboardView.xib */,
+			);
+			path = UI;
+			sourceTree = "<group>";
+		};
+		46F9019A2775BE8700024B5E /* Business */ = {
+			isa = PBXGroup;
+			children = (
+				46F9019C2775BEAE00024B5E /* GetContacts.swift */,
+				46F9019F2775BEE800024B5E /* ContactsRepository.swift */,
+			);
+			path = Business;
+			sourceTree = "<group>";
+		};
+		46F9019B2775BE8D00024B5E /* Data */ = {
+			isa = PBXGroup;
+			children = (
+				46F901A12775BF4B00024B5E /* ContactsRepositoryDefault.swift */,
+			);
+			path = Data;
+			sourceTree = "<group>";
+		};
+		46F901A82775D97000024B5E /* Utils */ = {
+			isa = PBXGroup;
+			children = (
+				46F901A92775D97900024B5E /* NibView.swift */,
+			);
+			path = Utils;
+			sourceTree = "<group>";
+		};
+		46F901AD2775F9EF00024B5E /* Cells */ = {
+			isa = PBXGroup;
+			children = (
+				46F901AE2775F9FB00024B5E /* ContactsCollectionView.swift */,
+				46F901B22775FD5900024B5E /* ContactCollectionViewCell.swift */,
+				46F901B02775FA0200024B5E /* ContactCollectionViewCell.xib */,
+			);
+			path = Cells;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -204,6 +274,8 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				46F901AC2775D99A00024B5E /* KeyboardView.xib in Resources */,
+				46F901B12775FA0200024B5E /* ContactCollectionViewCell.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -224,7 +296,15 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				46F901A52775D2D000024B5E /* KeyboardViewModel.swift in Sources */,
+				46F901A22775BF4B00024B5E /* ContactsRepositoryDefault.swift in Sources */,
 				46AC0514276FE18400990873 /* KeyboardViewController.swift in Sources */,
+				46F901A72775D94400024B5E /* KeyboardView.swift in Sources */,
+				46F9019D2775BEAE00024B5E /* GetContacts.swift in Sources */,
+				46F901AF2775F9FB00024B5E /* ContactsCollectionView.swift in Sources */,
+				46F901A02775BEE800024B5E /* ContactsRepository.swift in Sources */,
+				46F901AA2775D97900024B5E /* NibView.swift in Sources */,
+				46F901B32775FD5900024B5E /* ContactCollectionViewCell.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
